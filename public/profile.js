@@ -21,7 +21,7 @@ window.PROFILE = {
     phone: "+966559308785",            // the Call button (Saudi)
     email: "",                         // e.g. "you@example.com"
     linkedin: "",                      // full URL, e.g. "https://www.linkedin.com/in/your-handle"
-    github: "https://github.com/Afronutella",
+    github: "",                        // set a URL to show a GitHub button
     website: "https://gtai.ae/",
     websiteLabel: "GTAI",
   },
