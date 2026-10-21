@@ -46,7 +46,8 @@
   const C = P.contact || {};
   const digits = (s) => String(s || "").replace(/[^\d]/g, "");
   const buttons = [];
-  if (C.whatsapp) buttons.push({ k: "whatsapp", label: "WhatsApp", href: "https://wa.me/" + digits(C.whatsapp), c: "var(--whatsapp)" });
+  const was = Array.isArray(C.whatsapp) ? C.whatsapp : (C.whatsapp ? [{ label: "WhatsApp", number: C.whatsapp }] : []);
+  for (const w of was) if (w && w.number) buttons.push({ k: "whatsapp", label: w.label || "WhatsApp", href: "https://wa.me/" + digits(w.number), c: "var(--whatsapp)" });
   if (C.phone) buttons.push({ k: "phone", label: "Call", href: "tel:" + String(C.phone).replace(/[^\d+]/g, ""), c: "var(--phone)", light: true });
   if (C.email) buttons.push({ k: "email", label: "Email", href: "mailto:" + C.email, c: "var(--email)" });
   if (C.linkedin) buttons.push({ k: "linkedin", label: "LinkedIn", href: C.linkedin, c: "var(--linkedin)" });
@@ -77,7 +78,8 @@
       "N:" + rest.join(" ") + ";" + first + ";;;",
       "FN:" + (P.name || ""),
       P.headline ? "TITLE:" + P.headline : "",
-      C.phone ? "TEL;TYPE=CELL:" + C.phone : "",
+      C.phone ? "TEL;TYPE=CELL,VOICE:" + C.phone : "",
+      ...was.filter((w) => w && w.number && digits(w.number) !== digits(C.phone)).map((w) => "TEL;TYPE=CELL:+" + digits(w.number)),
       C.email ? "EMAIL;TYPE=INTERNET:" + C.email : "",
       C.linkedin ? "URL:" + C.linkedin : (C.website ? "URL:" + C.website : ""),
       P.location ? "ADR;TYPE=WORK:;;" + P.location + ";;;;" : "",

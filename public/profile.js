@@ -13,14 +13,19 @@ window.PROFILE = {
   photo: "assets/photo.jpg",          // drop a square photo here; a monogram shows until then
 
   contact: {
-    whatsapp: "",                      // international format, digits only, e.g. "9665XXXXXXXX"
-    phone: "",                         // e.g. "+9665XXXXXXXX"
+    // One WhatsApp button per entry. Numbers: international format, digits only.
+    whatsapp: [
+      { label: "WhatsApp · KSA", number: "966559308785" },
+      { label: "WhatsApp · UAE", number: "971501576684" },
+    ],
+    phone: "+966559308785",            // the Call button (Saudi)
     email: "",                         // e.g. "you@example.com"
     linkedin: "",                      // full URL, e.g. "https://www.linkedin.com/in/your-handle"
     github: "https://github.com/Afronutella",
-    website: "https://ae.gtaiconsultancy.com/",
-    websiteLabel: "GTAI Consultancy",
+    website: "https://gtai.ae/",
+    websiteLabel: "GTAI",
   },
+
 
   // Shown as the first paragraph of the "About" section.
   about: [
