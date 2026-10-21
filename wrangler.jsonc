@@ -1,0 +1,10 @@
+{
+  // Cloudflare Workers config: serve this repo as static assets (no Worker code).
+  "name": "digital-card",
+  "compatibility_date": "2025-10-01",
+  "assets": {
+    "directory": "./public",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
